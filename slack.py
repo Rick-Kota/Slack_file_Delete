@@ -3,8 +3,11 @@ import json
 import time
 import sys
 
-_token = "xxxxxxx"
-_domain = "xxxxxxx"
+file = open('token.txt', 'r')
+_token = file.readline()
+file.close()
+file = open('domain.txt', 'r')
+_domain = file.readline()
 
 def del_time(Day):
     Set_time = str(int(time.time())-Day*86400)
