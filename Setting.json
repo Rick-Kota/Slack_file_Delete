@@ -1,0 +1,21 @@
+{
+	"token":"xxxxxx",
+	"domain":"xxxxxx",
+	"User":[
+		{
+			"name":"USERNAME",
+			"admin":"false"
+		}
+	],
+	"Day":"14",
+	"Ignore":[
+		{
+			"Posts":"true",
+			"Snippets":"true",
+			"Image":"true",
+			"Google_docs":"true",
+			"Zip":"true",
+			"PDF":"true",
+		}
+	],	
+}
