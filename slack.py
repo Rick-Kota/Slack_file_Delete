@@ -17,7 +17,6 @@ def del_time(Day):
 def files_list(Day):
     Del_time = del_time(Day)
     files_list_url = "https://slack.com/api/files.list"
-    print(Setting["User"][0]["admin"] )
     if Setting["User"][0]["admin"]:
         user = None
     else:
@@ -41,7 +40,7 @@ def delete():
 
 if __name__ == '__main__':
     while 1:
-        files = files_list(0)
+        files = files_list(int(Setting["Day"]))
         if len(files) == 0:
             print ("No files")
             break
