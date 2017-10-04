@@ -1,11 +1,9 @@
 import requests
 import json
 import time
-import calendar
-from datetime import datetime, timedelta
 
 _token = "xxxxxxx"
-_domain = "xxxxxx"
+_domain = "xxxxxxx"
 
 def del_time(Day):
     Set_time = str(int(time.time())-Day*86400)
@@ -24,13 +22,12 @@ def delete():
 
 if __name__ == '__main__':
     while 1:
-        files = files_list(0)
+        files = files_list(7)
         if len(files) == 0:
             print ("No files")
             break
         for f in files:
             print ("Deleting file " + f["name"] + "...")
-            timestamp = str(calendar.timegm(datetime.now().utctimetuple()))
             delete_url = "https://slack.com/api/files.delete"
             data = {
                     "token": _token,
