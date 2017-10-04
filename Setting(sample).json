@@ -3,7 +3,7 @@
 	"domain":"xxxxxx",
 	"User":[
 		{
-			"name":"USERNAME",
+			"name":"USER_ID",
 			"admin":"false"
 		}
 	],

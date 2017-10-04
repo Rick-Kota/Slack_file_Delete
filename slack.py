@@ -5,8 +5,10 @@ import sys
 
 file = open('Setting.json', 'r')
 Setting = json.load(file)
+file.close()
 _token = Setting["token"]
 _domain = Setting["domain"]
+_ID = Setting["User"][0]["name"]
 
 def del_time(Day):
     Set_time = str(int(time.time())-Day*86400)
@@ -15,10 +17,15 @@ def del_time(Day):
 def files_list(Day):
     Del_time = del_time(Day)
     files_list_url = "https://slack.com/api/files.list"
+    if Setting["User"][0]["admin"]:
+        user = None
+    else:
+        user = _ID
     data = {
         "token": _token,
         "ts_to": Del_time,
-        "count":1000
+        "count":1000,
+        "user":user
         }
     response = requests.post(files_list_url,data)
 
@@ -33,7 +40,7 @@ def delete():
 
 if __name__ == '__main__':
     while 1:
-        files = files_list(0)
+        files = files_list(int(Setting["Day"]))
         if len(files) == 0:
             print ("No files")
             break
