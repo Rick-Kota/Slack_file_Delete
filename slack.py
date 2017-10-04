@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import sys
 
 _token = "xxxxxxx"
 _domain = "xxxxxxx"
@@ -12,17 +13,25 @@ def del_time(Day):
 def files_list(Day):
     Del_time = del_time(Day)
     files_list_url = "https://slack.com/api/files.list"
-    data = {"token": _token, "ts_to": Del_time, "count":1000}
+    data = {
+        "token": _token,
+        "ts_to": Del_time,
+        "count":1000
+        }
     response = requests.post(files_list_url,data)
+
+    if response.json()["ok"] == 0:
+        print("Error_exit(around API's argument)")
+        sys.exit()
     return response.json()["files"]
 
 def delete():
-
+    
     return
 
 if __name__ == '__main__':
     while 1:
-        files = files_list(7)
+        files = files_list(0)
         if len(files) == 0:
             print ("No files")
             break
@@ -36,4 +45,5 @@ if __name__ == '__main__':
                     "_attempts": "1"
                     }
             requests.post(delete_url, data)
-print ("DONE!")
+print ("complete")
+
